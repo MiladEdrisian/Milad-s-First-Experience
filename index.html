@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milad Edrisian | Executive Strategy</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --section-bg: #f8fafc;
+            --navy: #001f3f; 
+            --blue-light: #38bdf8; 
+            --text-main: #001f3f;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html { scroll-behavior: smooth; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 15px 0; background: rgba(255, 255, 255, 0.98);
+            border-bottom: 2px solid var(--navy);
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); text-decoration: none; }
+        
+        .nav-tabs { display: flex; gap: 20px; list-style: none; }
+        .nav-tabs a { 
+            text-decoration: none; color: var(--navy); font-size: 0.8rem; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; position: relative;
+        }
+        .nav-tabs a:hover { color: var(--blue-light); }
+        .nav-tabs a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; 
+            height: 3px; background: var(--blue-light); transition: 0.3s;
+        }
+        .nav-tabs a:hover::after { width: 100%; }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; overflow: hidden; background: #ffffff;
+            padding-top: 80px;
+        }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .hero-content { z-index: 2; width: 55%; }
+        .hero-title { 
+            font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900; line-height: 1; 
+            text-transform: uppercase; margin-bottom: 25px; color: var(--navy);
+        }
+        .hero-title span { -webkit-text-stroke: 1px var(--navy); color: transparent; }
+        .hero-subtitle { display: block; margin-bottom: 10px; color: var(--navy); font-weight: 800; letter-spacing: 2px; font-size: 1rem; text-transform: uppercase; }
+
+        .hero-image {
+            position: absolute; right: 0; top: 0; width: 45%; height: 100%; z-index: 1;
+        }
+        .hero-image img { 
+            width: 100%; height: 100%; object-fit: cover; object-position: top;
+            mask-image: linear-gradient(to left, black 70%, transparent 100%);
+        }
+
+        .btn-group { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
+        .btn-cv {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 15px 30px; background: var(--navy); color: white;
+            text-decoration: none; font-weight: 800; text-transform: uppercase;
+            font-size: 0.9rem; transition: 0.4s; border: 2px solid var(--navy);
+        }
+        .btn-cv:hover { background: transparent; color: var(--navy); transform: translateY(-5px); }
+
+        /* --- METRICS --- */
+        .metrics-section { padding: 80px 0; background: var(--navy); position: relative; z-index: 5; margin-top: -50px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .metric-square { text-align: center; padding: 20px; border-right: 1px solid rgba(56, 189, 248, 0.2); }
+        .metric-square:last-child { border-right: none; }
+        .m-val { font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 900; display: block; color: var(--blue-light); }
+        .m-lab { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; opacity: 0.8; }
+
+        /* --- SECTIONS --- */
+        .section-padding { padding: 80px 0; }
+        .label { color: var(--navy); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 1.2rem; display: block; border-bottom: 4px solid var(--blue-light); width: fit-content; margin-bottom: 40px; }
+        .title { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; margin-bottom: 40px; text-transform: uppercase; color: var(--navy); }
+
+        .exp-card {
+            background: #ffffff; border: 1px solid var(--border);
+            padding: clamp(20px, 5vw, 50px); border-radius: 0; margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .exp-card:hover { border-top: 6px solid var(--navy); box-shadow: 0 15px 35px rgba(0,31,63,0.1); }
+        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .role { font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 900; color: var(--navy); }
+        .company { color: var(--navy); font-weight: 800; text-transform: uppercase; font-size: 1rem; margin-top: 5px; opacity: 0.7; }
+        .date { font-size: 0.95rem; color: var(--navy); font-weight: 700; }
+
+        .list { list-style: none; margin-top: 20px; }
+        .list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--navy); font-size: 1rem; }
+        .list li::before { content: '→'; position: absolute; left: 0; color: var(--navy); font-weight: 900; }
+
+        /* --- SKILL ROWS --- */
+        .skills-container { margin-top: 40px; }
+        .skill-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid var(--border);
+            transition: 0.4s; gap: 15px;
+        }
+        .skill-row:hover { padding-left: 15px; color: var(--blue-light); }
+        .skill-name { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; }
+        .skill-detail { font-size: 0.95rem; font-weight: 600; text-align: right; color: var(--text-muted); }
+
+        /* --- FOOTER --- */
+        .footer {
+            margin: 80px 0; padding: 80px 20px;
+            background: var(--navy); text-align: center;
+        }
+        .footer h2 { font-size: clamp(2.2rem, 7vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 30px; color: var(--blue-light); }
+        .footer h2 span { color: white; }
+        .btn-main {
+            display: inline-block; padding: 20px 60px; background: var(--blue-light);
+            color: var(--navy); border-radius: 0; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 3px; transition: 0.4s; margin-bottom: 40px; text-decoration: none; font-size: 0.9rem;
+        }
+        .btn-main:hover { background: white; transform: scale(1.05); }
+
+        .contact-row {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+            border-top: 1px solid rgba(56, 189, 248, 0.3); padding-top: 40px;
+        }
+        .c-info h5 { color: var(--blue-light); font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+        .c-info p { font-weight: 700; font-size: 0.9rem; color: white; }
+
+        @media (max-width: 900px) {
+            .nav-tabs { display: none; }
+            .hero { text-align: center; height: auto; padding-bottom: 40px; }
+            .hero-flex { flex-direction: column; }
+            .hero-content { width: 100%; order: 2; margin-top: 30px; }
+            .hero-image { position: relative; width: 100%; height: 350px; order: 1; right: auto; top: auto; }
+            .hero-image img { mask-image: linear-gradient(to bottom, black 80%, transparent 100%); }
+            .hero-content p { border-left: none; border-top: 4px solid var(--navy); padding: 15px 0 0 0; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .skill-row { flex-direction: column; align-items: flex-start; text-align: left; }
+            .skill-detail { text-align: left; }
+            .contact-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <a href="#" class="logo">MILAD <strong>EDRISIAN</strong></a>
+            <ul class="nav-tabs">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-flex">
+            <div class="hero-image" data-aos="fade-left" data-aos-duration="1500">
+                <img src="Milad-profile.JPG" alt="Milad Edrisian">
+            </div>
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
+                <span class="hero-subtitle">Sharif University Alumnus | MBA & IE</span>
+                <h1 class="hero-title">ENGINEERING<br><span>GLOBAL</span> IMPACT</h1>
+                <p style="font-size: 1.1rem; color: var(--navy); font-weight: 600; border-left: 6px solid var(--navy); padding-left: 20px;">
+                    Head of International Business Development at Golrang Group, driving $10M in annual sales and securing a 450% budget increase. Strategic leader bridging Middle Eastern and East Asian commercial markets.
+                </p>
+                <div class="btn-group">
+                    <a href="CV-Milad Edrisian.pdf" download="CV-Milad Edrisian" class="btn-cv">
+                        <i class="fas fa-download"></i> Download CV-Milad Edrisian
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-section">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-square" data-aos="flip-up">
+                    <span class="m-val">$10M</span>
+                    <span class="m-lab">International Sales</span>
+                </div>
+                <div class="metric-square" data-aos="flip-up" data-aos-delay="100">
+                    <span class="m-val">450%</span>
+                    <span class="m-lab">Budget Growth</span>
+                </div>
+                <div class="metric-square" data-aos="flip-up" data-aos-delay="200">
+                    <span class="m-val">Band 7</span>
+                    <span class="m-lab">IELTS Oct 2024</span>
+                </div>
+                <div class="metric-square" data-aos="flip-up" data-aos-delay="300">
+                    <span class="m-val">$4M+</span>
+                    <span class="m-lab">"0-to-1" Launch Rev</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <span class="label" data-aos="fade-right">Professional Experience</span>
+            <h2 class="title" data-aos="fade-up" style="font-size: 1.8rem; margin-bottom: 40px;">GOLRANG INDUSTRIAL GROUP | <small style="font-size: 1rem; opacity: 0.6;">Largest Private Corp in Iran</small></h2>
+
+            <div class="exp-card" data-aos="fade-up">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="role">Head of International Business Development</h3>
+                        <h4 class="company">PADIDEH SHIMI GHARN (Subsidiary)</h4>
+                    </div>
+                    <span class="date">Mar. 2024 – Present</span>
+                </div>
+                <ul class="list">
+                    <li><strong>Unit Establishment:</strong> Founded the International Marketing Unit from scratch, defining the organizational structure and securing a 450% budget increase ($100k to $550k) by pitching strategy to the CEO. Elevated brand equity for core portfolios (Active, Roya, Actident).</li>
+                    <li><strong>Process Optimization:</strong> Redesigned the Export Product Development Process, leveraging internal R&D infrastructure to streamline operations and accelerate time-to-market.</li>
+                    <li><strong>Sales Synergy:</strong> Spearheaded cross-functional alignment between marketing and export teams, driving international sales to $10M (Mar 2024–2025) and setting a $15M target (50% YoY growth).</li>
+                </ul>
+            </div>
+
+            <div class="exp-card" data-aos="fade-up">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="role">Business Development Consultant</h3>
+                        <h4 class="company">PADIDEH ZISTI NANO (Subsidiary)</h4>
+                    </div>
+                    <span class="date">Oct. 2023 – Present</span>
+                </div>
+                <ul class="list">
+                    <li>Architected strategic market expansion for Zinc Oxide (ZnO) and Silica (SiO2), focusing on their classification as high-tech, knowledge-based assets to secure a competitive advantage.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card" data-aos="fade-up">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="role">New Product Development Supervisor</h3>
+                        <h4 class="company">SEPEHR PLASTIC PADIDEH (Subsidiary)</h4>
+                    </div>
+                    <span class="date">Jul. 2023 – Mar. 2024</span>
+                </div>
+                <ul class="list">
+                    <li>Led new category development via Co-R&D and competitor analysis for Pino Baby (leading Iranian brand in baby/infant care), aligning technical designs with market demands.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card" data-aos="fade-up">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="role">Project and Supply Chain Supervisor</h3>
+                        <h4 class="company">SEPEHR PLASTIC PADIDEH (Subsidiary)</h4>
+                    </div>
+                    <span class="date">Jun. 2021 – Jul. 2023</span>
+                </div>
+                <ul class="list">
+                    <li><strong>Brand Launch:</strong> Led the strategic launch of Pino Baby as Golrang’s specialized infant care brand. Directed capacity assessment, machinery layout, and production line setup.</li>
+                    <li><strong>Market Success:</strong> Orchestrated end-to-end launch of 33 SKUs across 3 categories (detergents, nursing, baby care), generating ~2,000 billion IRR ($4M+ USD) in first-year revenue.</li>
+                    <li><strong>Leadership:</strong> Managed the entire supply chain for Pino Baby. Formulated annual MRP and Master Production Schedules (MPS), ensuring optimal supply planning.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: var(--section-bg);">
+        <div class="container">
+            <span class="label">Select Projects & Certifications</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="exp-card" data-aos="zoom-in">
+                    <h3 class="role" style="font-size: 1.3rem;">Product Management Course</h3>
+                    <p class="company">Snapp Group (Iran's Largest Startup) | 2024</p>
+                    <p style="font-size: 0.95rem; margin-top: 15px;"><strong>Scope:</strong> Specialized training on product lifecycle management, agile methodologies, and data-driven strategy led by Snapp's top product directors.</p>
+                </div>
+                <div class="exp-card" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="role" style="font-size: 1.3rem;">Internationalization Strategy: Pino Baby</h3>
+                    <p class="company">European Market Entry | Advisor: Dr. M. R. Saeedi</p>
+                    <p style="font-size: 0.95rem; margin-top: 15px;"><strong>Scope:</strong> Developed entry strategy using IMS and 4P Marketing Mix. Delivered full economic analysis and budget for European expansion.</p>
+                </div>
+                <div class="exp-card" data-aos="zoom-in" data-aos-delay="200">
+                    <h3 class="role" style="font-size: 1.3rem;">Strategic Planning: Sepehr Plastic</h3>
+                    <p class="company">Roadmap Formulation | Advisor: Dr. M. R. Arasti</p>
+                    <p style="font-size: 0.95rem; margin-top: 15px;"><strong>Scope:</strong> Holistic industry analysis of plastic packaging. Defined core competencies and SWOT factors to formulate a long-term strategic roadmap.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section-padding">
+        <div class="container">
+            <span class="label" data-aos="fade-right">Academic Credentials</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="exp-card" data-aos="fade-up">
+                    <h3 class="role" style="font-size: 1.5rem;">MBA - Marketing</h3>
+                    <p class="company">Sharif University of Technology (Ranked #1 in Iran - QS 2025)</p>
+                    <p style="margin-top: 10px; font-weight: 800; color: var(--navy);">GPA: 3.81 / 4 | 2021 – 2024</p>
+                    <p style="font-size: 0.95rem; margin-top: 10px;"><strong>Research:</strong> Impacts of dynamic managerial capabilities on firm international performance (Analyzing Liability of Foreignness).</p>
+                </div>
+                <div class="exp-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="role" style="font-size: 1.5rem;">B.Sc. Industrial Engineering</h3>
+                    <p class="company">Sharif University of Technology</p>
+                    <p style="margin-top: 10px; font-weight: 800; color: var(--navy);">GPA: 3.78 / 4 | 2017 – 2021</p>
+                    <p style="font-size: 0.95rem; margin-top: 10px;"><strong>Project:</strong> Data-driven design and implementation of House of Quality (HOQ) for detergent packaging at Sepehr Plastic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <span class="label">Expertise & Languages</span>
+            <div class="skills-container">
+                <div class="skill-row" data-aos="fade-left">
+                    <span class="skill-name">Languages</span>
+                    <span class="skill-detail">English: IELTS 7.0 (L:7.5, R:7.0, S:7.0, W:6.5) | Persian: Native</span>
+                </div>
+                <div class="skill-row" data-aos="fade-left" data-aos-delay="100">
+                    <span class="skill-name">Advanced Proficiency</span>
+                    <span class="skill-detail">Microsoft Office Suite | AI Productivity Tools</span>
+                </div>
+                <div class="skill-row" data-aos="fade-left" data-aos-delay="200">
+                    <span class="skill-name">Management Software</span>
+                    <span class="skill-detail">Visual Paradigm (BPMN) | Primavera P6 | MSP | Power BI</span>
+                </div>
+                <div class="skill-row" data-aos="fade-left" data-aos-delay="300">
+                    <span class="skill-name">Core Competencies</span>
+                    <span class="skill-detail">Commercial Negotiation | Cross-functional Teamwork | Strategic Problem Solving</span>
+                </div>
+                <div class="skill-row" data-aos="fade-left" data-aos-delay="400">
+                    <span class="skill-name">Extracurricular</span>
+                    <span class="skill-detail">Scientific Associations of Management & Industrial Engineering (Sharif)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="contact" class="container">
+        <footer class="footer" data-aos="zoom-out">
+            <h2>Let's Define the<br><span>Future of Growth</span></h2>
+            <a href="mailto:miladedrisian99@gmail.com" class="btn-main">Initiate Discussion</a>
+            <div class="contact-row">
+                <div class="c-info"><h5>Email</h5><p>miladedrisian99@gmail.com</p></div>
+                <div class="c-info"><h5>Direct</h5><p>(+98) 912 024 4269</p></div>
+                <div class="c-info"><h5>LinkedIn</h5><p>Milad Edrisian</p></div>
+                <div class="c-info"><h5>Location</h5><p>Tehran, Iran</p></div>
+            </div>
+            <p style="margin-top: 40px; opacity: 0.3; font-size: 0.7rem; color: white;">© 2025 MILAD EDRISIAN | STRATEGIC PERFORMANCE</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ 
+            duration: 1000, 
+            once: false,
+            mirror: true,
+            offset: 120
+        });
+    </script>
+</body>
+</html>
